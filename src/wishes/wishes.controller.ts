@@ -15,7 +15,6 @@ import { WishesService } from './wishes.service';
 import { CreateWishDto } from './dto/createWish.dto';
 import { UpdateWishDto } from './dto/updateWish.dto';
 
-@UseGuards(JwtGuard)
 @Controller('wishes')
 export class WishesController {
   constructor(private wishesService: WishesService) {}
@@ -30,6 +29,7 @@ export class WishesController {
     return this.wishesService.findTopWishes();
   }
 
+  @UseGuards(JwtGuard)
   @Get(':id')
   async getWishById(@Param('id') id: string) {
     return await this.wishesService.findOne(+id);

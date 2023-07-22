@@ -62,7 +62,7 @@ export class WishesService {
 
   async findTopWishes(): Promise<Wish[]> {
     return await this.wishesRepository.find({
-      take: 20,
+      take: 10,
       order: { copied: 'DESC' },
     });
   }
